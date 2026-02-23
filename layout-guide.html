@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>DOMO Living Coming Soon - Layout Guide</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { 
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
+      background: #1a1a1a; 
+      color: #fff; 
+      line-height: 1.6;
+      padding: 40px;
+    }
+    .page { 
+      max-width: 900px; 
+      margin: 0 auto 60px; 
+      background: #0a0a0a; 
+      border-radius: 12px; 
+      overflow: hidden;
+      page-break-after: always;
+    }
+    .page:last-child { page-break-after: auto; }
+    h1 { font-size: 32px; font-weight: 300; margin-bottom: 10px; }
+    h2 { font-size: 24px; font-weight: 400; margin-bottom: 20px; color: #dc2626; }
+    h3 { font-size: 18px; font-weight: 500; margin: 20px 0 10px; }
+    .header { 
+      background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%); 
+      padding: 60px 40px; 
+      text-align: center; 
+    }
+    .header h1 { font-size: 48px; margin-bottom: 5px; }
+    .header .subtitle { color: rgba(255,255,255,0.8); font-size: 18px; }
+    .section { padding: 40px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .section:last-child { border-bottom: none; }
+    .section-title { 
+      font-size: 12px; 
+      letter-spacing: 2px; 
+      text-transform: uppercase; 
+      color: #dc2626; 
+      margin-bottom: 8px; 
+    }
+    .image-grid { display: grid; gap: 20px; margin-top: 20px; }
+    .image-grid.two { grid-template-columns: 1fr 1fr; }
+    .image-grid.three { grid-template-columns: 1fr 1fr 1fr; }
+    .image-grid.four { grid-template-columns: 1fr 1fr 1fr 1fr; }
+    .image-card { 
+      background: #111; 
+      border-radius: 8px; 
+      overflow: hidden; 
+    }
+    .image-card img { 
+      width: 100%; 
+      height: auto; 
+      display: block; 
+    }
+    .image-card .caption { 
+      padding: 12px 16px; 
+      font-size: 14px; 
+      color: rgba(255,255,255,0.7); 
+    }
+    .image-card .caption strong { color: #fff; display: block; margin-bottom: 4px; }
+    .specs { 
+      background: #111; 
+      border-radius: 8px; 
+      padding: 20px; 
+      margin-top: 20px; 
+    }
+    .specs-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
+    .spec-item { display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 8px; }
+    .spec-label { color: rgba(255,255,255,0.5); }
+    .spec-value { color: #dc2626; font-weight: 500; }
+    .color-swatch { 
+      display: inline-block; 
+      width: 24px; 
+      height: 24px; 
+      border-radius: 4px; 
+      vertical-align: middle; 
+      margin-right: 8px; 
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+    .layout-diagram { 
+      background: #111; 
+      border-radius: 8px; 
+      padding: 30px; 
+      margin: 20px 0;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .layout-row { 
+      display: flex; 
+      gap: 10px; 
+      margin-bottom: 10px; 
+    }
+    .layout-box { 
+      background: rgba(220, 38, 38, 0.2); 
+      border: 2px dashed #dc2626; 
+      border-radius: 6px; 
+      padding: 15px; 
+      text-align: center; 
+      flex: 1;
+      font-size: 13px;
+    }
+    .layout-box.hero { min-height: 120px; display: flex; align-items: center; justify-content: center; }
+    .layout-box.full { flex: 1; }
+    .layout-box.half { flex: 0.5; }
+    ul { margin-left: 20px; }
+    li { margin-bottom: 8px; color: rgba(255,255,255,0.8); }
+    .note { 
+      background: rgba(220, 38, 38, 0.1); 
+      border-left: 3px solid #dc2626; 
+      padding: 15px 20px; 
+      margin: 20px 0; 
+      font-size: 14px;
+    }
+    @media print {
+      body { background: #fff; padding: 0; }
+      .page { box-shadow: none; margin-bottom: 0; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- COVER PAGE -->
+<div class="page">
+  <div class="header">
+    <h1><strong>DOMO</strong><span style="font-weight:300">Living</span></h1>
+    <div class="subtitle">Coming Soon Landing Page — Layout Guide + Assets</div>
+    <div style="margin-top:20px; font-size:14px; opacity:0.8;">
+      Prepared for DesignMe / Luke • February 2026
+    </div>
+  </div>
+  
+  <div class="section">
+    <div class="section-title">Design System</div>
+    <h2>Brand Colors & Typography</h2>
+    
+    <div class="specs">
+      <div class="specs-grid">
+        <div class="spec-item">
+          <span class="spec-label">Primary Background</span>
+          <span class="spec-value"><span class="color-swatch" style="background:#0a0a0a"></span>#0a0a0a</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">Secondary Background</span>
+          <span class="spec-value"><span class="color-swatch" style="background:#111111"></span>#111111</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">Accent (Red)</span>
+          <span class="spec-value"><span class="color-swatch" style="background:#dc2626"></span>#dc2626</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">Accent Hover</span>
+          <span class="spec-value"><span class="color-swatch" style="background:#ef4444"></span>#ef4444</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">Text Primary</span>
+          <span class="spec-value"><span class="color-swatch" style="background:#ffffff"></span>#ffffff</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">Text Secondary</span>
+          <span class="spec-value"><span class="color-swatch" style="background:#666666"></span>white/60</span>
+        </div>
+      </div>
+    </div>
+    
+    <h3>Typography</h3>
+    <ul>
+      <li>Font: System UI / Inter / SF Pro</li>
+      <li>Hero: 80px light (desktop), 48px (mobile)</li>
+      <li>Section headers: 48px light</li>
+      <li>Body: 18px, line-height 1.6</li>
+      <li>Buttons: 16-18px semibold</li>
+    </ul>
+  </div>
+</div>
+
+<!-- PAGE STRUCTURE -->
+<div class="page">
+  <div class="section">
+    <div class="section-title">Page Structure</div>
+    <h2>Homepage Layout</h2>
+    
+    <div class="layout-diagram">
+      <div class="layout-row">
+        <div class="layout-box full" style="min-height:50px;">
+          <strong>STICKY HEADER</strong><br>
+          Logo + Nav (Amenities, Units, Building) + CTA
+        </div>
+      </div>
+      <div class="layout-row">
+        <div class="layout-box hero full">
+          <strong>HERO — Full Viewport</strong><br>
+          Video background (hero.mp4)<br>
+          Gradient overlay<br>
+          "Ready to move in without the stress?"<br>
+          Two CTAs: Primary + Secondary
+        </div>
+      </div>
+      <div class="layout-row">
+        <div class="layout-box full" style="min-height:80px;">
+          <strong>ABOUT — "Move in with just your toothbrush"</strong><br>
+          2-column: Text + Stats | Image stack (kitchen + living room)
+        </div>
+      </div>
+      <div class="layout-row">
+        <div class="layout-box full" style="min-height:80px;">
+          <strong>FEATURES GRID</strong><br>
+          6 feature cards: Furniture, Smart Home, Kitchen, Laundry, Solar, Internet
+        </div>
+      </div>
+      <div class="layout-row">
+        <div class="layout-box full" style="min-height:80px;">
+          <strong>LIFESTYLE GALLERY</strong><br>
+          4-image masonry: Rooftop (large) + 3 small cards
+        </div>
+      </div>
+      <div class="layout-row">
+        <div class="layout-box full" style="min-height:80px;">
+          <strong>LOCATION</strong><br>
+          2-column: Car arrival image | Hillcrest highlights
+        </div>
+      </div>
+      <div class="layout-row">
+        <div class="layout-box full" style="min-height:80px; background:rgba(220,38,38,0.3);">
+          <strong>WAITLIST FORM</strong><br>
+          Email, Name, Phone, Timeline, Bedroom Pref
+        </div>
+      </div>
+      <div class="layout-row">
+        <div class="layout-box full" style="min-height:50px;">
+          <strong>FOOTER</strong><br>
+          Logo + Nav + Address
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- HERO SECTION -->
+<div class="page">
+  <div class="section">
+    <div class="section-title">Section 1</div>
+    <h2>Hero — Video Background</h2>
+    
+    <div class="image-grid">
+      <div class="image-card">
+        <img src="public/images/fera-esrgan/hero-building.jpg" alt="Hero fallback">
+        <div class="caption">
+          <strong>Video Poster / Fallback</strong>
+          hero-building.jpg — Used when video isn't loaded
+        </div>
+      </div>
+    </div>
+    
+    <div class="note">
+      <strong>Video specs:</strong> hero.mp4 plays muted + looping as background. 
+      Dark gradient overlay (from-black/60 via-black/30 to-black/80) ensures text readability.
+    </div>
+    
+    <h3>Copy</h3>
+    <ul>
+      <li><strong>Eyebrow:</strong> Coming Spring 2026 • Hillcrest, San Diego</li>
+      <li><strong>Headline:</strong> Ready to move in without the stress?</li>
+      <li><strong>Subhead:</strong> Fully furnished apartments. Smart home technology. A community designed for modern living.</li>
+      <li><strong>CTA 1:</strong> Get Priority Access (red button)</li>
+      <li><strong>CTA 2:</strong> Explore Amenities (outline button)</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ABOUT SECTION -->
+<div class="page">
+  <div class="section">
+    <div class="section-title">Section 2</div>
+    <h2>About — "Move in with just your toothbrush"</h2>
+    
+    <div class="image-grid two">
+      <div class="image-card">
+        <img src="public/images/fera-esrgan/kitchen.jpg" alt="Kitchen">
+        <div class="caption">
+          <strong>kitchen.jpg</strong>
+          Primary image — Samsung appliances, quartz counters
+        </div>
+      </div>
+      <div class="image-card">
+        <img src="public/images/fera-esrgan/living-room.jpg" alt="Living Room">
+        <div class="caption">
+          <strong>living-room.jpg</strong>
+          Inset image — Designer furniture showcase
+        </div>
+      </div>
+    </div>
+    
+    <h3>Stats Display</h3>
+    <div class="specs">
+      <div class="specs-grid">
+        <div class="spec-item"><span class="spec-label">Residences</span><span class="spec-value">60</span></div>
+        <div class="spec-item"><span class="spec-label">Furnished</span><span class="spec-value">100%</span></div>
+        <div class="spec-item"><span class="spec-label">Internet</span><span class="spec-value">1GB</span></div>
+        <div class="spec-item"><span class="spec-label">Views</span><span class="spec-value">360°</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- LIFESTYLE GALLERY -->
+<div class="page">
+  <div class="section">
+    <div class="section-title">Section 4</div>
+    <h2>Lifestyle Gallery — "More than an apartment"</h2>
+    
+    <div class="image-grid two">
+      <div class="image-card">
+        <img src="public/images/fera-esrgan/rooftop-friends.jpg" alt="Rooftop Friends">
+        <div class="caption">
+          <strong>rooftop-friends.jpg</strong>
+          Large card — "360° Rooftop" — Movie nights, BBQ, city views
+        </div>
+      </div>
+      <div class="image-card">
+        <img src="public/images/fera-esrgan/rooftop-work.jpg" alt="Rooftop Work">
+        <div class="caption">
+          <strong>rooftop-work.jpg</strong>
+          "Work Anywhere" — Rooftop co-working spaces
+        </div>
+      </div>
+    </div>
+    
+    <div class="image-grid two" style="margin-top:20px;">
+      <div class="image-card">
+        <img src="public/images/fera-esrgan/package-room.jpg" alt="Package Room">
+        <div class="caption">
+          <strong>package-room.jpg</strong>
+          "Smart Amenities" — Package lockers, concierge tech
+        </div>
+      </div>
+      <div class="image-card">
+        <img src="public/images/fera-esrgan/bedroom-closet.jpg" alt="Bedroom Closet">
+        <div class="caption">
+          <strong>bedroom-closet.jpg</strong>
+          "Thoughtful Design" — Custom closets, premium finishes
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- LOCATION SECTION -->
+<div class="page">
+  <div class="section">
+    <div class="section-title">Section 5</div>
+    <h2>Location — "Heart of San Diego's best neighborhood"</h2>
+    
+    <div class="image-grid">
+      <div class="image-card">
+        <img src="public/images/fera-esrgan/arrival-car.jpg" alt="Arrival Car">
+        <div class="caption">
+          <strong>arrival-car.jpg</strong>
+          Building arrival scene — Premium car arriving at DOMO
+        </div>
+      </div>
+    </div>
+    
+    <h3>Location Highlights</h3>
+    <ul>
+      <li>2 blocks from Balboa Park</li>
+      <li>50+ restaurants within walking distance</li>
+      <li>Car-optional lifestyle</li>
+      <li>Year-round outdoor living</li>
+      <li>Walk Score: 95 / Bike Score: 89</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ALL IMAGES -->
+<div class="page">
+  <div class="section">
+    <div class="section-title">Asset Library</div>
+    <h2>All FERA Images (4x Upscaled)</h2>
+    <p style="color:rgba(255,255,255,0.6); margin-bottom:20px;">
+      Original: 864×480 → Upscaled: 3456×1920 via Real-ESRGAN x4plus
+    </p>
+    
+    <div class="image-grid two">
+      <div class="image-card">
+        <img src="public/images/fera-esrgan/hero-building.jpg" alt="">
+        <div class="caption"><strong>hero-building.jpg</strong></div>
+      </div>
+      <div class="image-card">
+        <img src="public/images/fera-esrgan/kitchen.jpg" alt="">
+        <div class="caption"><strong>kitchen.jpg</strong></div>
+      </div>
+      <div class="image-card">
+        <img src="public/images/fera-esrgan/living-room.jpg" alt="">
+        <div class="caption"><strong>living-room.jpg</strong></div>
+      </div>
+      <div class="image-card">
+        <img src="public/images/fera-esrgan/bedroom-closet.jpg" alt="">
+        <div class="caption"><strong>bedroom-closet.jpg</strong></div>
+      </div>
+      <div class="image-card">
+        <img src="public/images/fera-esrgan/rooftop-friends.jpg" alt="">
+        <div class="caption"><strong>rooftop-friends.jpg</strong></div>
+      </div>
+      <div class="image-card">
+        <img src="public/images/fera-esrgan/rooftop-work.jpg" alt="">
+        <div class="caption"><strong>rooftop-work.jpg</strong></div>
+      </div>
+      <div class="image-card">
+        <img src="public/images/fera-esrgan/package-room.jpg" alt="">
+        <div class="caption"><strong>package-room.jpg</strong></div>
+      </div>
+      <div class="image-card">
+        <img src="public/images/fera-esrgan/arrival-car.jpg" alt="">
+        <div class="caption"><strong>arrival-car.jpg</strong></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SUBPAGES -->
+<div class="page">
+  <div class="section">
+    <div class="section-title">Additional Pages</div>
+    <h2>Subpage Structure</h2>
+    
+    <h3>/amenities</h3>
+    <p style="color:rgba(255,255,255,0.6);">Deep dive into building amenities: rooftop deck, wellness center, e-bike program, package room, etc.</p>
+    
+    <h3>/units</h3>
+    <p style="color:rgba(255,255,255,0.6);">Unit types (Studio, 1BR, 2BR), floor plans, included furniture/appliances, pricing ranges.</p>
+    
+    <h3>/building</h3>
+    <p style="color:rgba(255,255,255,0.6);">Building specs, sustainability features (solar, battery), smart home tech, location details.</p>
+    
+    <div class="note">
+      <strong>Note:</strong> All subpages follow same dark aesthetic with red accents. 
+      Each links back to main waitlist CTA.
+    </div>
+  </div>
+  
+  <div class="section">
+    <div class="section-title">Tech Stack</div>
+    <h2>Implementation Details</h2>
+    
+    <ul>
+      <li><strong>Framework:</strong> Next.js 16 + TypeScript</li>
+      <li><strong>Styling:</strong> Tailwind CSS</li>
+      <li><strong>Backend:</strong> Supabase (waitlist form storage)</li>
+      <li><strong>Video:</strong> HTML5 video, muted autoplay loop</li>
+      <li><strong>Images:</strong> Real-ESRGAN 4x upscaled from FERA AI renders</li>
+    </ul>
+  </div>
+</div>
+
+</body>
+</html>
