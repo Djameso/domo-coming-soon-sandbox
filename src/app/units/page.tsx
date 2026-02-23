@@ -55,51 +55,50 @@ function FloorSelector({ unitTypes }: { unitTypes: UnitType[] }) {
       {/* Building Photo with Floor Overlays */}
       <div className="w-full max-w-[360px] lg:max-w-[400px] flex-shrink-0 relative">
         <div className="relative overflow-hidden rounded-lg">
+          {/* Base layer: "lights off" version — darkened building */}
           <img
             src="/images/building-night.jpg"
             alt="DOMO Living — 3745 4th Avenue, Hillcrest"
-            className="w-full"
+            className="w-full transition-all duration-700"
+            style={{
+              filter: activeFloor ? 'brightness(0.25) contrast(1.1)' : 'brightness(1)',
+            }}
           />
           
-          {/* "Lights off" overlay — dims all floors except the selected one */}
+          {/* "Lights on" layer — bright original, clipped to selected floor only */}
           {activeFloor && (() => {
             const activeZone = floorZones.find(z => z.floor === activeFloor)
             if (!activeZone) return null
-            const zoneTop = activeZone.top
-            const zoneBottom = activeZone.top + activeZone.height
+            // Clip path reveals only the selected floor's window area
+            // Windows span roughly left 24% to 74% of the image
+            const t = activeZone.top
+            const b = activeZone.top + activeZone.height
             return (
-              <>
-                {/* Dark overlay ABOVE selected floor */}
-                <div
-                  className="absolute pointer-events-none z-[5] transition-all duration-700 ease-out"
-                  style={{ left: 0, right: 0, top: 0, bottom: `${100 - zoneTop}%`, background: 'rgba(0, 0, 0, 0.7)' }}
-                />
-                {/* Dark overlay BELOW selected floor */}
-                <div
-                  className="absolute pointer-events-none z-[5] transition-all duration-700 ease-out"
-                  style={{ left: 0, right: 0, top: `${zoneBottom}%`, bottom: 0, background: 'rgba(0, 0, 0, 0.7)' }}
-                />
-                {/* Dark overlay LEFT of selected floor */}
-                <div
-                  className="absolute pointer-events-none z-[5] transition-all duration-700 ease-out"
-                  style={{ left: 0, right: '76%', top: `${zoneTop}%`, height: `${activeZone.height}%`, background: 'rgba(0, 0, 0, 0.7)' }}
-                />
-                {/* Dark overlay RIGHT of selected floor */}
-                <div
-                  className="absolute pointer-events-none z-[5] transition-all duration-700 ease-out"
-                  style={{ left: '74%', right: 0, top: `${zoneTop}%`, height: `${activeZone.height}%`, background: 'rgba(0, 0, 0, 0.7)' }}
-                />
-                {/* Glow border on selected floor */}
-                <div
-                  className="absolute pointer-events-none z-[6] transition-all duration-500 ease-out"
-                  style={{
-                    left: '24%', width: '50%', top: `${zoneTop}%`, height: `${activeZone.height}%`,
-                    border: '1px solid rgba(255, 255, 255, 0.3)',
-                    borderRadius: '4px',
-                    boxShadow: '0 0 25px rgba(255, 255, 255, 0.15), inset 0 0 15px rgba(255, 255, 255, 0.05)',
-                  }}
-                />
-              </>
+              <img
+                src="/images/building-night.jpg"
+                alt=""
+                className="absolute inset-0 w-full h-full object-cover pointer-events-none z-[5] transition-all duration-700"
+                style={{
+                  clipPath: `polygon(22% ${t}%, 76% ${t}%, 76% ${b}%, 22% ${b}%)`,
+                }}
+              />
+            )
+          })()}
+
+          {/* Subtle glow border on selected floor */}
+          {activeFloor && (() => {
+            const activeZone = floorZones.find(z => z.floor === activeFloor)
+            if (!activeZone) return null
+            return (
+              <div
+                className="absolute pointer-events-none z-[6] transition-all duration-500 ease-out"
+                style={{
+                  left: '22%', width: '54%', top: `${activeZone.top}%`, height: `${activeZone.height}%`,
+                  border: '1px solid rgba(255, 255, 255, 0.2)',
+                  borderRadius: '3px',
+                  boxShadow: '0 0 20px rgba(255, 200, 100, 0.1)',
+                }}
+              />
             )
           })()}
 
@@ -112,22 +111,22 @@ function FloorSelector({ unitTypes }: { unitTypes: UnitType[] }) {
                 onClick={() => handleFloorSelect(zone.floor)}
                 className="absolute z-10 transition-all duration-200"
                 style={{
-                  left: '24%',
-                  width: '50%',
+                  left: '22%',
+                  width: '56%',
                   top: `${zone.top}%`,
                   height: `${zone.height}%`,
                 }}
               >
-                {/* Hover highlight — only when no floor is selected or this floor is active */}
+                {/* Hover highlight */}
                 <div className={`w-full h-full rounded-sm border transition-all duration-200 ${
                   isActive 
                     ? 'bg-transparent border-transparent' 
-                    : 'bg-transparent border-transparent hover:bg-white/10 hover:border-white/20'
+                    : 'bg-transparent border-transparent hover:bg-white/5 hover:border-white/10'
                 }`} />
                 
                 {/* Floor label */}
-                <div className={`absolute -left-14 top-1/2 -translate-y-1/2 text-xs font-mono transition-all ${
-                  isActive ? 'text-red-400 font-bold' : 'text-white/40'
+                <div className={`absolute -left-12 top-1/2 -translate-y-1/2 text-xs font-mono transition-all duration-500 ${
+                  isActive ? 'text-red-400 font-bold' : activeFloor ? 'text-white/20' : 'text-white/40'
                 }`}>
                   F{zone.floor}
                 </div>
