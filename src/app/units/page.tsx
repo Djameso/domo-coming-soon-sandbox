@@ -61,15 +61,56 @@ function FloorSelector({ unitTypes }: { unitTypes: UnitType[] }) {
             className="w-full"
           />
           
+          {/* "Lights off" overlay — dims all floors except the selected one */}
+          {activeFloor && (() => {
+            const activeZone = floorZones.find(z => z.floor === activeFloor)
+            if (!activeZone) return null
+            const zoneTop = activeZone.top
+            const zoneBottom = activeZone.top + activeZone.height
+            return (
+              <>
+                {/* Dark overlay ABOVE selected floor */}
+                <div
+                  className="absolute pointer-events-none z-[5] transition-all duration-700 ease-out"
+                  style={{ left: 0, right: 0, top: 0, bottom: `${100 - zoneTop}%`, background: 'rgba(0, 0, 0, 0.7)' }}
+                />
+                {/* Dark overlay BELOW selected floor */}
+                <div
+                  className="absolute pointer-events-none z-[5] transition-all duration-700 ease-out"
+                  style={{ left: 0, right: 0, top: `${zoneBottom}%`, bottom: 0, background: 'rgba(0, 0, 0, 0.7)' }}
+                />
+                {/* Dark overlay LEFT of selected floor */}
+                <div
+                  className="absolute pointer-events-none z-[5] transition-all duration-700 ease-out"
+                  style={{ left: 0, right: '76%', top: `${zoneTop}%`, height: `${activeZone.height}%`, background: 'rgba(0, 0, 0, 0.7)' }}
+                />
+                {/* Dark overlay RIGHT of selected floor */}
+                <div
+                  className="absolute pointer-events-none z-[5] transition-all duration-700 ease-out"
+                  style={{ left: '74%', right: 0, top: `${zoneTop}%`, height: `${activeZone.height}%`, background: 'rgba(0, 0, 0, 0.7)' }}
+                />
+                {/* Glow border on selected floor */}
+                <div
+                  className="absolute pointer-events-none z-[6] transition-all duration-500 ease-out"
+                  style={{
+                    left: '24%', width: '50%', top: `${zoneTop}%`, height: `${activeZone.height}%`,
+                    border: '1px solid rgba(255, 255, 255, 0.3)',
+                    borderRadius: '4px',
+                    boxShadow: '0 0 25px rgba(255, 255, 255, 0.15), inset 0 0 15px rgba(255, 255, 255, 0.05)',
+                  }}
+                />
+              </>
+            )
+          })()}
+
           {/* Floor tap zones */}
           {floorZones.map((zone) => {
-            const fd = floorData.find(f => f.floor === zone.floor)
             const isActive = activeFloor === zone.floor
             return (
               <button
                 key={zone.floor}
                 onClick={() => handleFloorSelect(zone.floor)}
-                className="absolute transition-all duration-200"
+                className="absolute z-10 transition-all duration-200"
                 style={{
                   left: '24%',
                   width: '50%',
@@ -77,10 +118,10 @@ function FloorSelector({ unitTypes }: { unitTypes: UnitType[] }) {
                   height: `${zone.height}%`,
                 }}
               >
-                {/* Hover/active highlight overlay */}
+                {/* Hover highlight — only when no floor is selected or this floor is active */}
                 <div className={`w-full h-full rounded-sm border transition-all duration-200 ${
                   isActive 
-                    ? 'bg-red-600/25 border-red-500/80 shadow-[0_0_15px_rgba(201,58,58,0.3)]' 
+                    ? 'bg-transparent border-transparent' 
                     : 'bg-transparent border-transparent hover:bg-white/10 hover:border-white/20'
                 }`} />
                 
@@ -90,8 +131,6 @@ function FloorSelector({ unitTypes }: { unitTypes: UnitType[] }) {
                 }`}>
                   F{zone.floor}
                 </div>
-
-                {/* removed unit type label on right for cleaner look */}
               </button>
             )
           })}

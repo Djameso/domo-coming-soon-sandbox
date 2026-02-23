@@ -191,67 +191,22 @@ export default function BuildingHotspot() {
         {/* Minimal overlay — just enough for readability at edges */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/30" />
 
-        {/* "Lights off" overlay — dims all floors except the selected one */}
+        {/* Glow effects for active hotspots */}
         {activeHotspot?.glowArea && (
-          <>
-            {/* Dark overlay ABOVE selected floor */}
-            <div
-              className="absolute pointer-events-none z-[5] transition-all duration-700 ease-out"
-              style={{
-                left: 0,
-                right: 0,
-                top: 0,
-                bottom: `${100 - activeHotspot.glowArea.top}%`,
-                background: 'rgba(0, 0, 0, 0.65)',
-              }}
-            />
-            {/* Dark overlay BELOW selected floor */}
-            <div
-              className="absolute pointer-events-none z-[5] transition-all duration-700 ease-out"
-              style={{
-                left: 0,
-                right: 0,
-                top: `${activeHotspot.glowArea.bottom}%`,
-                bottom: 0,
-                background: 'rgba(0, 0, 0, 0.65)',
-              }}
-            />
-            {/* Dark overlay LEFT of selected floor */}
-            <div
-              className="absolute pointer-events-none z-[5] transition-all duration-700 ease-out"
-              style={{
-                left: 0,
-                right: `${100 - activeHotspot.glowArea.left}%`,
-                top: `${activeHotspot.glowArea.top}%`,
-                bottom: `${100 - activeHotspot.glowArea.bottom}%`,
-                background: 'rgba(0, 0, 0, 0.65)',
-              }}
-            />
-            {/* Dark overlay RIGHT of selected floor */}
-            <div
-              className="absolute pointer-events-none z-[5] transition-all duration-700 ease-out"
-              style={{
-                left: `${activeHotspot.glowArea.right}%`,
-                right: 0,
-                top: `${activeHotspot.glowArea.top}%`,
-                bottom: `${100 - activeHotspot.glowArea.bottom}%`,
-                background: 'rgba(0, 0, 0, 0.65)',
-              }}
-            />
-            {/* Subtle glow on the selected floor */}
-            <div
-              className="absolute pointer-events-none z-[6] transition-all duration-500 ease-out"
-              style={{
-                left: `${activeHotspot.glowArea.left}%`,
-                right: `${100 - activeHotspot.glowArea.right}%`,
-                top: `${activeHotspot.glowArea.top}%`,
-                bottom: `${100 - activeHotspot.glowArea.bottom}%`,
-                border: '1px solid rgba(255, 255, 255, 0.25)',
-                borderRadius: '4px',
-                boxShadow: '0 0 30px rgba(255, 255, 255, 0.15), inset 0 0 20px rgba(255, 255, 255, 0.05)',
-              }}
-            />
-          </>
+          <div
+            className="absolute pointer-events-none z-5 transition-all duration-500 ease-out"
+            style={{
+              left: `${activeHotspot.glowArea.left}%`,
+              right: `${100 - activeHotspot.glowArea.right}%`,
+              top: `${activeHotspot.glowArea.top}%`,
+              bottom: `${100 - activeHotspot.glowArea.bottom}%`,
+              background: 'linear-gradient(45deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05))',
+              border: '1px solid rgba(255, 255, 255, 0.2)',
+              backdropFilter: 'blur(1px)',
+              borderRadius: '4px',
+              boxShadow: '0 0 20px rgba(255, 255, 255, 0.1), inset 0 0 20px rgba(255, 255, 255, 0.05)',
+            }}
+          />
         )}
 
         {/* Hotspot markers */}
