@@ -55,31 +55,33 @@ function FloorSelector({ unitTypes }: { unitTypes: UnitType[] }) {
       {/* Building Photo with Floor Overlays */}
       <div className="w-full max-w-[360px] lg:max-w-[400px] flex-shrink-0 relative">
         <div className="relative overflow-hidden rounded-lg">
-          {/* Base layer: "lights off" version — darkened building */}
+          {/* Base layer: lights ON when no selection, lights OFF when floor selected */}
           <img
             src="/images/building-night.jpg"
             alt="DOMO Living — 3745 4th Avenue, Hillcrest"
-            className="w-full transition-all duration-700"
-            style={{
-              filter: activeFloor ? 'brightness(0.25) contrast(1.1)' : 'brightness(1)',
-            }}
+            className={`w-full transition-opacity duration-700 ${activeFloor ? 'opacity-0' : 'opacity-100'}`}
+          />
+          {/* Dark building (lights off) — shown when a floor is selected */}
+          <img
+            src="/images/building-night-dark.jpg"
+            alt=""
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${activeFloor ? 'opacity-100' : 'opacity-0'}`}
           />
           
-          {/* "Lights on" layer — bright original, clipped to selected floor only */}
+          {/* "Lights on" layer — bright original photo, clipped to selected floor only */}
           {activeFloor && (() => {
             const activeZone = floorZones.find(z => z.floor === activeFloor)
             if (!activeZone) return null
-            // Clip path reveals only the selected floor's window area
-            // Windows span roughly left 24% to 74% of the image
             const t = activeZone.top
             const b = activeZone.top + activeZone.height
             return (
               <img
                 src="/images/building-night.jpg"
                 alt=""
-                className="absolute inset-0 w-full h-full object-cover pointer-events-none z-[5] transition-all duration-700"
+                className="absolute inset-0 w-full h-full object-cover pointer-events-none z-[5]"
                 style={{
                   clipPath: `polygon(22% ${t}%, 76% ${t}%, 76% ${b}%, 22% ${b}%)`,
+                  transition: 'clip-path 0.5s ease-out',
                 }}
               />
             )
