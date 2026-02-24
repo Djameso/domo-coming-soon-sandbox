@@ -17,8 +17,7 @@ export default function Amenities() {
       title: 'Co-Working Rooftop',
       description: 'Work from home doesn\'t mean work from your couch. Our rooftop co-working space offers fresh air, natural light, and views of the Bay and downtown skyline — the best office view in San Diego.',
       features: ['Shaded work areas', 'Power outlets throughout', 'High-speed WiFi', 'Comfortable seating'],
-      image: '/images/fera-esrgan/rooftop-work.jpg',
-      video: '/video/rooftop-work-loop.mp4'
+      image: '/images/fera-esrgan/rooftop-work.jpg'
     },
     {
       title: 'Smart Package Room',
@@ -31,8 +30,7 @@ export default function Amenities() {
       title: 'Wellness Center',
       description: 'A holistic approach to fitness and wellness. Our center is designed for both high-energy workouts and mindful recovery.',
       features: ['Cardio & strength equipment', 'Yoga & meditation space', 'Recovery zone', 'Natural lighting'],
-      image: '/images/gym.jpg',
-      video: '/video/gym-loop.mp4'
+      image: '/images/gym.jpg'
     },
     {
       title: 'Community Lounge',
