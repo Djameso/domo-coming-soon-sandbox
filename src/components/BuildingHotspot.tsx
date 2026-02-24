@@ -64,11 +64,11 @@ const hotspots: Hotspot[] = [
     glowArea: { left: 28, right: 72, top: 12, bottom: 24 },
     details: {
       title: 'Top Floor Residence',
-      subtitle: 'Top Floor · 1,100+ Sqft',
+      subtitle: 'Top Floor · From 425 Sqft + Balcony',
       images: ['/images/fera-esrgan/bedroom-closet.jpg', '/images/fera-esrgan/living-room.jpg', '/images/fera-esrgan/kitchen.jpg'],
       price: '$3,300',
       pricePer: '/mo',
-      sqft: '1,100+ Sqft',
+      sqft: 'From 425 Sqft + 450 Sqft Balcony',
       description:
         'The crown jewel with expansive layouts and premium finishes. Private rooftop access, panoramic city views, and the ultimate in luxury living.',
       features: [
@@ -90,11 +90,11 @@ const hotspots: Hotspot[] = [
     glowArea: { left: 28, right: 72, top: 24, bottom: 52 },
     details: {
       title: '2-Bedroom Residence',
-      subtitle: 'Floors 3–4 · 900–1,100 Sqft',
+      subtitle: 'Floors 3–4 · 425–630 Sqft',
       images: ['/images/fera-esrgan/bedroom-closet.jpg', '/images/fera-esrgan/living-room.jpg', '/images/fera-esrgan/kitchen.jpg'],
       price: '$2,850',
       pricePer: '/mo',
-      sqft: '900–1,100 Sqft',
+      sqft: '425–630 Sqft',
       description:
         'Spacious units with dual exposure and premium amenities. Move in with just a suitcase — everything from furniture to cookware is included.',
       features: [

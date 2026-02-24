@@ -15,12 +15,12 @@ interface UnitType {
 }
 
 const floorData = [
-  { floor: 6, label: 'Floor 6', unitType: 'top', desc: 'Premium top-floor residences with private 450 sqft balcony and unobstructed Bay, Point Loma & ocean views', price: 'From $3,300/mo', sqft: '1,100+ sq ft', tag: 'Top Floor' },
-  { floor: 5, label: 'Floor 5', unitType: '2br', desc: 'Spacious 2-bedroom residences with dual exposure and flexible office space', price: 'From $2,850/mo', sqft: 'From 630 sq ft', tag: '2 Bedroom' },
-  { floor: 4, label: 'Floor 4', unitType: '2br', desc: 'Spacious 2-bedroom residences with dual exposure and flexible office space', price: 'From $2,850/mo', sqft: 'From 630 sq ft', tag: '2 Bedroom' },
-  { floor: 3, label: 'Floor 3', unitType: '1br', desc: '1-bedroom residences — the perfect mix of comfort and efficiency', price: 'From $2,450/mo', sqft: 'From 425 sq ft', tag: '1 Bedroom' },
-  { floor: 2, label: 'Floor 2', unitType: '1br', desc: '1-bedroom residences — the perfect mix of comfort and efficiency', price: 'From $2,450/mo', sqft: 'From 425 sq ft', tag: '1 Bedroom' },
-  { floor: 1, label: 'Floor 1', unitType: '1br', desc: '1-bedroom residences with easy ground-floor access', price: 'From $2,450/mo', sqft: 'From 425 sq ft', tag: '1 Bedroom' },
+  { floor: 6, label: 'Floor 6', unitType: 'top', desc: 'Premium top-floor residences with private 450 sq ft balcony and unobstructed Bay, Point Loma & ocean views', price: 'From $3,300/mo', sqft: 'From 425 sq ft + 450 sq ft balcony', tag: 'Top Floor' },
+  { floor: 5, label: 'Floor 5', unitType: 'mix', desc: '1 & 2 bedroom residences with dual exposure and flexible living space', price: 'From $2,450/mo', sqft: '425–630 sq ft', tag: '1 & 2 Bedroom' },
+  { floor: 4, label: 'Floor 4', unitType: 'mix', desc: '1 & 2 bedroom residences with dual exposure and flexible living space', price: 'From $2,450/mo', sqft: '425–630 sq ft', tag: '1 & 2 Bedroom' },
+  { floor: 3, label: 'Floor 3', unitType: 'mix', desc: '1 & 2 bedroom residences — the perfect mix of comfort and efficiency', price: 'From $2,450/mo', sqft: '425–630 sq ft', tag: '1 & 2 Bedroom' },
+  { floor: 2, label: 'Floor 2', unitType: 'mix', desc: '1 & 2 bedroom residences — the perfect mix of comfort and efficiency', price: 'From $2,450/mo', sqft: '425–630 sq ft', tag: '1 & 2 Bedroom' },
+  { floor: 1, label: 'Floor 1', unitType: 'mix', desc: '1 & 2 bedroom residences with easy ground-floor access', price: 'From $2,450/mo', sqft: '425–630 sq ft', tag: '1 & 2 Bedroom' },
 ]
 
 function FloorSelector({ unitTypes }: { unitTypes: UnitType[] }) {

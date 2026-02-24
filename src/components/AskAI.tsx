@@ -117,8 +117,8 @@ DOMO LIVING UNITS — WHAT'S INCLUDED:
 
 UNIT TYPES (NO STUDIOS — all have separate bedrooms and full bathrooms):
 - 1-Bedroom: from 425 sq ft, from $2,450/mo
-- 2-Bedroom: 900-1,100 sq ft, from $2,850/mo
-- Penthouse: 1,100+ sq ft, from $3,300/mo with 450 sq ft private balcony with ocean views
+- 1 & 2 Bedroom: 425-630 sq ft, from $2,450/mo
+- Top Floor: From 425 sq ft with 450 sq ft private balcony, from $3,300/mo with ocean views
 
 EVERY UNIT COMES FULLY FURNISHED (move-in ready — no furniture shopping, no hauling things up elevators):
 - Platform bed frame with premium mattress
