@@ -6,6 +6,7 @@ import Header from '@/components/Header'
 import { ChevronDown } from 'lucide-react'
 import AskAI from '@/components/AskAI'
 import BuildingHotspot from '@/components/BuildingHotspot'
+import VideoFeed from '@/components/VideoFeed'
 import { supabase } from '@/lib/supabase'
 
 export default function Home() {
@@ -299,6 +300,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Video Feed */}
+      <VideoFeed />
 
       {/* Location Teaser */}
       <section className="py-24 px-6 bg-[#111]">
